@@ -1,6 +1,8 @@
 PowerShell
         1. Diagonostyka
+        
     A: Na co pozwala mi powershell?
+    
 -Informacje o systemie (jego wersja, jądro i kofniguracji):
 
 `Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture, LastBootUpTime`
@@ -8,6 +10,7 @@ PowerShell
 -Procesor (liczba rdzeni, wątków, taktowanie bazowe oraz Cache):
 
 `Get-CimInstance -ClassName Win32_Processor | Sekect-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed, L2CacheSize, L3CacheSize`
+
 -Ram (pojemonść, takotwanie, producent i numer seryjny modułu)
 
 `Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object DeviceLocator, Capity, Speed, Manufacturer, PartNumber`
