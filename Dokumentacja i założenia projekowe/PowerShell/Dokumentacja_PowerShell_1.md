@@ -1,6 +1,6 @@
-PowerShell
-        1. Diagonostyka
-    A: Na co pozwala mi powershell?
+# PowerShell
+  ## 1. Diagonostyka
+   ### A: Na co pozwala mi powershell?
 -Informacje o systemie (jego wersja, jądro i kofniguracji):
 `Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture, LastBootUpTime`
 
@@ -39,7 +39,7 @@ PowerShell
 -Programy autostartu
 
 `Get-CimInstance -ClassName Win32_StartupCommand | Select-Object Name, Command, Location`
-    B: implementacja w pliku "specyfikacja.ps1"
+  ###  B: implementacja w pliku "specyfikacja.ps1"
 aby wszystkie skrypty działały i były uruchamiane grupowo w pliku `.ps1` muszę po pierwsze dodać formatowanie tekstu z nagłówkiem czego te dane dotyczą, na przykład:
 `Write-Output `"== Informacje o nazwa podawanych danych=="``
 oraz potrzebujemy klauzuli wypisującej te dane, czyli na końcu powyższych metod należy dodać fragment:
