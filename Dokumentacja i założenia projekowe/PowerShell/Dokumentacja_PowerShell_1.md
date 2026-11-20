@@ -1,48 +1,27 @@
 PowerShell
-# Diagonostyka
-        
-   ## A: Na co pozwala mi powershell?
-    
--Informacje o systemie (jego wersja, jądro i konfiguracji):
-
+        1. Diagonostyka
+    A: Na co pozwala mi powershell?
+-Informacje o systemie (jego wersja, jądro i kofniguracji):
 `Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Caption, Version, BuildNumber, OSArchitecture, LastBootUpTime`
 
 -Procesor (liczba rdzeni, wątków, taktowanie bazowe oraz Cache):
-
-`Get-CimInstance -ClassName Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed, L2CacheSize, L3CacheSize`
-
--Ram (pojemność, taktowanie, producent i numer seryjny modułu)
-
-`Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object DeviceLocator, Capacity, Speed, Manufacturer, PartNumber`
-
+`Get-CimInstance -ClassName Win32_Processor | Sekect-Object Name, NumberOfCores, NumberOfLogicalProcessors, MaxClockSpeed, L2CacheSize, L3CacheSize`
+-Ram (pojemonść, takotwanie, producent i numer seryjny modułu)
+`Get-CimInstance -ClassName Win32_PhysicalMemory | Select-Object DeviceLocator, Capity, Speed, Manufacturer, PartNumber`
 -Płyta główna
-
-`Get-CimInstance -ClassName Win32_BaseBoard | Select-Object Manufacturer, Product, SerialNumber, Version`
-
+`Get-CimInstance -ClassName Win32_BaseBoard | Select-Object `
 -Karta graficzna oraz monitory
-
-`Get-CimInstance -ClassName Win32_VideoController | Select-Object Name, AdapterRAM, DriverVersion, VideoModeDescription`
-
+`Get-CimInstance -ClassName Win32_VideoController | Select-Object `
 -Dyski 
-
-`Get-PhysicalDisk | Select-Object FriendlyName, MediaType, Size, HealthStatus`
-
+`Get-PhysicalDisk | Select-Object `
 -Karty sieciowe
-
-`Get-NetAdapter | Select-Object Name, InterfaceDescription, Status, MacAddress, LinkSpeed`
-
+`Get-CimInstance -ClassName Win32_Battery | Select-Object `
 -Adresacja IP, bramy domyślne oraz DNS
-
-`Get-NetIPConfiguration | Select-Object InterfaceAlias, IPv4Address, IPv4DefaultGateway, DNSServer`
-
+`Get-NetAdapter | Select-Object `
 -Aktywne połączenia i otwarte porty
-
-`Get-NetTCPConnection -State Established, Listen | Select-Object LocalAddress, LocalPort, RemoteAddress, RemotePort, State, OwningProcess`
-
+`Get-NetTCPConnection -State Established, Listen | Select-Object `
 -Tablica Routingu i pamięć podręczna ARP
-
-`Get-NetRoute`
-
+`Get-NetRouge`
 `Get-NetNeighbor`
 
 -Monitor zużycia zasobów
@@ -60,13 +39,9 @@ PowerShell
 -Programy autostartu
 
 `Get-CimInstance -ClassName Win32_StartupCommand | Select-Object Name, Command, Location`
-
-  ##  B: implementacja w pliku "specyfikacja.ps1"
-    
+    B: implementacja w pliku "specyfikacja.ps1"
 aby wszystkie skrypty działały i były uruchamiane grupowo w pliku `.ps1` muszę po pierwsze dodać formatowanie tekstu z nagłówkiem czego te dane dotyczą, na przykład:
-
-`Write-Output "== Informacje o nazwa podawanych danych=="`
-
+`Write-Output `"== Informacje o nazwa podawanych danych=="``
 oraz potrzebujemy klauzuli wypisującej te dane, czyli na końcu powyższych metod należy dodać fragment:
 
 `| Format-Table -AutoSize | Out-Host`
